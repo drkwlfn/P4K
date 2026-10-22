@@ -1,5 +1,49 @@
 [
     {
+        "fileHash": "sha256-df31b9af9aae1cebe305dbbaf306a156a45835762c4246b5dabf46f8f993d983",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/drkwlfn/P4K",
+        "fileSize": 34512,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "Daniel",
+            "drkwlfn"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries"
+        ],
+        "version": 4,
+        "internalName": "KKPhim",
+        "description": "KKPhim - catalog theo th\u1ec3 lo\u1ea1i, qu\u1ed1c gia, n\u0103m",
+        "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/KKPhim.cs3",
+        "name": "KKPhim"
+    },
+    {
+        "iconUrl": "https://phim.nguonc.com/public/images/Logo/tv.png",
+        "fileHash": "sha256-920c6d40702bfff140edd6b92f256fe70372385369c779a0ddfccfe819f815dd",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/drkwlfn/P4K",
+        "fileSize": 44753,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "CloudSteam_plugin",
+            "drkwlfn"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries",
+            "Anime"
+        ],
+        "version": 2,
+        "internalName": "NguonC",
+        "description": "NguonC - phim Vietsub, thuy\u1ebft minh v\u00e0 l\u1ed3ng ti\u1ebfng",
+        "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/NguonC.cs3",
+        "name": "NguonC"
+    },
+    {
         "iconUrl": "https://raw.githubusercontent.com/p4kxyz/p4k/main/lg_player.png",
         "fileHash": "sha256-e31a5ec6fea9989cda75fd9f751a32081ec727bf0b88e6925604c10b4a464911",
         "apiVersion": 1,
@@ -20,5 +64,28 @@
         "description": "Phim4K provider - Netflix-style catalog with genres, countries, trending",
         "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/Phim4K.cs3",
         "name": "Phim4K"
+    },
+    {
+        "iconUrl": "https://www.google.com/s2/favicons?domain=vsmov.com&sz=%size%",
+        "fileHash": "sha256-82842fb049a1d2cc4a900a2d2d5295eb4c5e91f6228058863a48e20ce545fce3",
+        "apiVersion": 1,
+        "repositoryUrl": "https://github.com/drkwlfn/P4K",
+        "fileSize": 34830,
+        "status": 1,
+        "language": "vi",
+        "authors": [
+            "CloudSteam_plugin",
+            "drkwlfn"
+        ],
+        "tvTypes": [
+            "Movie",
+            "TvSeries",
+            "Anime"
+        ],
+        "version": 2,
+        "internalName": "VSMov",
+        "description": "VSMov - phim Vietsub, thuy\u1ebft minh v\u00e0 l\u1ed3ng ti\u1ebfng",
+        "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/VSMov.cs3",
+        "name": "VSMov"
     }
 ]
