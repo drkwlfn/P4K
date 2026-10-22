@@ -1,9 +1,9 @@
 // CloudStream Phim4K provider
-version = 4
+version = 5
 
 cloudstream {
-    description = "Phim4K provider with rotating API and CDN configuration"
-    authors = listOf("kgicao29-ux")
+    description = "Phim4K provider - Netflix-style catalog with genres, countries, trending"
+    authors = listOf("kgicao29-ux", "drkwlfn")
     status = 1
     tvTypes = listOf("Movie", "TvSeries")
     language = "vi"

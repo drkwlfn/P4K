@@ -35,37 +35,82 @@ class Phim4KProvider : MainAPI() {
     override val supportedTypes = setOf(TvType.Movie, TvType.TvSeries)
 
     override val mainPage = mainPageOf(
+        // Trending
+        "top:daily:movie" to "🔥 Phim lẻ hot hôm nay",
+        "top:daily:tvseries" to "🔥 Phim bộ hot hôm nay",
+        "top:weekly:movie" to "📈 Phim lẻ tuần này",
+        "top:weekly:tvseries" to "📈 Phim bộ tuần này",
+        "top:monthly:movie" to "🏆 Phim lẻ tháng này",
+        "top:monthly:tvseries" to "🏆 Phim bộ tháng này",
+        // Mới cập nhật
         "movies" to "Phim lẻ mới cập nhật",
         "tvseries" to "Phim bộ mới cập nhật",
-        "top_movie" to "Phim lẻ xem nhiều tuần này",
-        "top_tvseries" to "Phim bộ xem nhiều tuần này",
+        // Thể loại
+        "genre:1" to "Hành Động",
+        "genre:15" to "Kinh Dị",
+        "genre:8" to "Hài Hước",
+        "genre:16" to "Lãng Mạn",
+        "genre:13" to "Hoạt Hình",
+        "genre:10" to "Viễn Tưởng",
+        "genre:4" to "Ly Kỳ",
+        "genre:3" to "Tội Phạm",
+        "genre:9" to "Chính Kịch",
+        "genre:12" to "Bí Ẩn",
+        "genre:5" to "Lịch Sử",
+        "genre:6" to "Chiến Tranh",
+        "genre:19" to "Tài Liệu",
+        "genre:14" to "Gia Đình",
+        // Quốc gia
+        "country:13" to "🇰🇷 Phim Hàn Quốc",
+        "country:15" to "🇨🇳 Phim Trung Quốc",
+        "country:6" to "🇯🇵 Phim Nhật Bản",
+        "country:1" to "🇺🇸 Phim Mỹ",
+        "country:16" to "🇭🇰 Phim Hồng Kông",
+        "country:17" to "🇹🇼 Phim Đài Loan",
+        "country:43" to "🇹🇭 Phim Thái Lan",
+        "country:5" to "🇻🇳 Phim Việt Nam",
+        "country:32" to "🇮🇳 Phim Ấn Độ",
+        "country:10" to "🇬🇧 Phim Anh",
+        "country:8" to "🇫🇷 Phim Pháp",
     )
 
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
-        val (path, params, type) = when (request.data) {
-            "tvseries" -> Triple(
+        val data = request.data
+        val (path, params, type) = when {
+            data.startsWith("top:") -> {
+                val parts = data.split(":")
+                val period = parts.getOrElse(1) { "weekly" }
+                val contentType = parts.getOrElse(2) { "movie" }
+                Triple(
+                    "top_views",
+                    mapOf(
+                        "period" to period,
+                        "type" to contentType,
+                        "limit" to "24",
+                        "page" to page.toString(),
+                    ),
+                    if (contentType == "tvseries") TvType.TvSeries else TvType.Movie,
+                )
+            }
+            data.startsWith("genre:") -> {
+                val genreId = data.removePrefix("genre:")
+                Triple(
+                    "content_by_genre_id",
+                    mapOf("id" to genreId, "page" to page.toString()),
+                    TvType.Movie,
+                )
+            }
+            data.startsWith("country:") -> {
+                val countryId = data.removePrefix("country:")
+                Triple(
+                    "content_by_country_id",
+                    mapOf("id" to countryId, "page" to page.toString()),
+                    TvType.Movie,
+                )
+            }
+            data == "tvseries" -> Triple(
                 "tvseries",
                 mapOf("page" to page.toString()),
-                TvType.TvSeries,
-            )
-            "top_movie" -> Triple(
-                "top_views",
-                mapOf(
-                    "period" to "weekly",
-                    "type" to "movie",
-                    "limit" to "24",
-                    "page" to page.toString(),
-                ),
-                TvType.Movie,
-            )
-            "top_tvseries" -> Triple(
-                "top_views",
-                mapOf(
-                    "period" to "weekly",
-                    "type" to "tvseries",
-                    "limit" to "24",
-                    "page" to page.toString(),
-                ),
                 TvType.TvSeries,
             )
             else -> Triple(
@@ -75,7 +120,6 @@ class Phim4KProvider : MainAPI() {
             )
         }
 
-        // A temporary API/configuration failure should not break the whole home page.
         val items = runCatching { apiList(path, params) }.getOrElse { emptyList() }
         val results = items.mapNotNull { it.toSearchResponse(type) }
         return newHomePageResponse(
