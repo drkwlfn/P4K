@@ -1,0 +1,204 @@
+[
+  {
+    "iconUrl": "https://www.google.com/s2/favicons?domain=https://Anikototv.to&sz=256",
+    "fileHash": "sha256-2d5610a7309f3f3cac5904b81565ea3f1fece957f984f585fbfde307b1f5bf76",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 38801,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Anime",
+      "Movie",
+      "OVA"
+    ],
+    "version": 9,
+    "internalName": "Anikoto",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/Anikoto.cs3",
+    "name": "Anikoto"
+  },
+  {
+    "iconUrl": "https://icons.duckduckgo.com/ip3/Anime47.best.ico",
+    "fileHash": "sha256-105f3c27de57d8a44670f4d3f893110b3a782e02b805d9ee1739b7623af9af41",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 53031,
+    "status": 1,
+    "language": "vi",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Anime"
+    ],
+    "version": 17,
+    "internalName": "Anime47",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/Anime47.cs3",
+    "name": "Anime47"
+  },
+  {
+    "iconUrl": "https://www.google.com/s2/favicons?domain=https://onflix.lat&sz=256",
+    "fileHash": "sha256-6052d94d5950a3d05d5854f16a54b2a962e2f10981f06adc3bc1c192d82be59d",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 48330,
+    "status": 1,
+    "language": "vi",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries",
+      "Anime"
+    ],
+    "version": 7,
+    "internalName": "Onflix",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/Onflix.cs3",
+    "name": "Onflix"
+  },
+  {
+    "iconUrl": "https://www.1phim22.com/favicon.ico",
+    "fileHash": "sha256-6ab67dc81e13ccf950e6828a5b5a0e2fd5aa748592c0b4013840e5de7fe66ae1",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 61194,
+    "status": 1,
+    "language": "vi",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 15,
+    "internalName": "PhimDinhCao",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/PhimDinhCao.cs3",
+    "name": "PhimDinhCao"
+  },
+  {
+    "iconUrl": "https://www.google.com/s2/favicons?domain=https://phimhdcss.com&sz=256",
+    "fileHash": "sha256-650a754a9bed5447a806e0b4a27f6fcc2f333cb8837278056f279e1c8c2e883f",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 84656,
+    "status": 1,
+    "language": "vi",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries",
+      "Anime",
+      "AsianDrama"
+    ],
+    "version": 8,
+    "internalName": "PhimHDCS",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/PhimHDCS.cs3",
+    "name": "PhimHDCS"
+  },
+  {
+    "iconUrl": "https://icons.duckduckgo.com/ip3/PhimSea.com.ico",
+    "fileHash": "sha256-c0d6a529839b46be6ef63791003d3dd371866d726af3a65b617ab9daeeeb5445",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 42757,
+    "status": 1,
+    "language": "vi",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Movie",
+      "Anime",
+      "TvSeries"
+    ],
+    "version": 7,
+    "internalName": "PhimSea",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/PhimSea.cs3",
+    "name": "PhimSea"
+  },
+  {
+    "iconUrl": "https://icons.duckduckgo.com/ip3/ridomovies.su.ico",
+    "fileHash": "sha256-fab6f75d3aec6ad60d36ba285da4bf74fc782e85fbd91c70d5a30624dee6b475",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 86575,
+    "status": 1,
+    "language": "en",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Movie",
+      "TvSeries"
+    ],
+    "version": 7,
+    "internalName": "RidoMovies",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/RidoMovies.cs3",
+    "name": "RidoMovies"
+  },
+  {
+    "iconUrl": "https://clouding.vn/wp-content/uploads/2022/10/cropped-Cloud-Services-192x192.png",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 42324,
+    "status": 1,
+    "authors": [
+      "anhdaden",
+      "RowdyRushya"
+    ],
+    "version": 9,
+    "internalName": "SyncProvider",
+    "description": "Đồng bộ cài đặt và lịch sử xem giữa các thiết bị",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/SyncProvider.cs3",
+    "name": "Cross-Device Sync",
+    "fileHash": "sha256-ef3e1f23ddb890018e6164c2bd42310c2ab9f6712ec5fd2a116212212ca8a01c"
+  },
+  {
+    "iconUrl": "https://www.google.com/s2/favicons?domain=uncutmaza.cc&sz=%size%",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 312346,
+    "status": 1,
+    "authors": [
+      "anhdaden",
+      "hexated"
+    ],
+    "tvTypes": [
+      "TvSeries",
+      "Anime",
+      "Movie"
+    ],
+    "version": 35,
+    "internalName": "ViStreamProvider",
+    "description": "Download FullHD, 2K, 4K from torrent and cloud driver",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/ViStreamProvider.cs3",
+    "name": "ViStreamProvider",
+    "fileHash": "sha256-2f83a4ffacc087efe993e2719d9e6e2f187bc6289b1ffd3e3e35f6928ed8337a"
+  },
+  {
+    "iconUrl": "https://www.google.com/s2/favicons?domain=https://Yanhh3d.vip&sz=256",
+    "fileHash": "sha256-f9640501b4f4799a23e7240651c7ee886bbc3f2b265c79b0ba035a8592eded44",
+    "apiVersion": 1,
+    "repositoryUrl": "https://github.com/drkwlfn/P4K",
+    "fileSize": 68281,
+    "status": 1,
+    "language": "vi",
+    "authors": [
+      "SIX"
+    ],
+    "tvTypes": [
+      "Cartoon"
+    ],
+    "version": 28,
+    "internalName": "Yanhh3d",
+    "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/Yanhh3d.cs3",
+    "name": "Yanhh3d"
+  }
+]

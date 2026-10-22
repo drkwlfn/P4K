@@ -69,7 +69,9 @@ jobs:
 
           find "$GITHUB_WORKSPACE/builds" -maxdepth 1 -name '*.cs3' -type f -delete
           cp "${artifacts[@]}" "$GITHUB_WORKSPACE/builds/"
-          cp "$GITHUB_WORKSPACE/src/build/plugins.json" "$GITHUB_WORKSPACE/builds/plugins.json"
+          cp "$GITHUB_WORKSPACE"/src/plugins/*.cs3 "$GITHUB_WORKSPACE/builds/"
+          jq -s 'add' "$GITHUB_WORKSPACE/src/build/plugins.json" "$GITHUB_WORKSPACE/src/plugins/prebuilt.json" \
+            > "$GITHUB_WORKSPACE/builds/plugins.json"
 
       - name: Publish builds branch
         shell: bash

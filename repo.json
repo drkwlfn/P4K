@@ -1,6 +1,6 @@
 {
   "name": "drkwlfn CloudStream",
-  "description": "Bộ plugin CloudStream phim tiếng Việt: Phim4K, KKPhim, NguonC, VSMov",
+  "description": "Bộ plugin CloudStream phim tiếng Việt: Phim4K, KKPhim, NguonC, VSMov, Onflix, PhimHDCS, PhimSea, anime…",
   "manifestVersion": 1,
   "pluginLists": [
     "https://raw.githubusercontent.com/drkwlfn/P4K/builds/plugins.json"
