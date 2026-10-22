@@ -1,23 +1,24 @@
 [
     {
         "iconUrl": "https://raw.githubusercontent.com/p4kxyz/p4k/main/lg_player.png",
-        "fileHash": "sha256-cec1278f551a0e854cdd8c0169eb13faf9252ff97f7ed0b55bd9c18560c3c7d0",
+        "fileHash": "sha256-e31a5ec6fea9989cda75fd9f751a32081ec727bf0b88e6925604c10b4a464911",
         "apiVersion": 1,
-        "repositoryUrl": "https://github.com/kgicao29-ux/P4K",
-        "fileSize": 47865,
+        "repositoryUrl": "https://github.com/drkwlfn/P4K",
+        "fileSize": 49440,
         "status": 1,
         "language": "vi",
         "authors": [
-            "kgicao29-ux"
+            "kgicao29-ux",
+            "drkwlfn"
         ],
         "tvTypes": [
             "Movie",
             "TvSeries"
         ],
-        "version": 4,
+        "version": 5,
         "internalName": "Phim4K",
-        "description": "Phim4K provider with rotating API and CDN configuration",
-        "url": "https://raw.githubusercontent.com/kgicao29-ux/P4K/builds/Phim4K.cs3",
+        "description": "Phim4K provider - Netflix-style catalog with genres, countries, trending",
+        "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/Phim4K.cs3",
         "name": "Phim4K"
     }
 ]
