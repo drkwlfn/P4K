@@ -67,7 +67,7 @@ jobs:
             exit 1
           fi
 
-          rm -f "$GITHUB_WORKSPACE/builds/Phim4K.cs3"
+          find "$GITHUB_WORKSPACE/builds" -maxdepth 1 -name '*.cs3' -type f -delete
           cp "${artifacts[@]}" "$GITHUB_WORKSPACE/builds/"
           cp "$GITHUB_WORKSPACE/src/build/plugins.json" "$GITHUB_WORKSPACE/builds/plugins.json"
 
