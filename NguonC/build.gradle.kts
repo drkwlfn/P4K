@@ -1,4 +1,4 @@
-version = 31
+version = 32
 
 cloudstream {
     description = "NguonC - phim Vietsub, thuyết minh và lồng tiếng"

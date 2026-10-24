@@ -509,6 +509,8 @@ private data class NguonCMovie(
             .lowercase()
         return when {
             format.contains("hoạt hình") || format.contains("anime") -> TvType.Anime
+            tmdb?.type.equals("tv", true) -> TvType.TvSeries
+            tmdb?.type.equals("movie", true) && (totalEpisodes ?: 1) <= 1 -> TvType.Movie
             totalEpisodes?.let { it > 1 } == true -> TvType.TvSeries
             currentEpisode.orEmpty().contains("tập", true) -> TvType.TvSeries
             format.contains("phim bộ") || format.contains("tv show") -> TvType.TvSeries
