@@ -209,21 +209,24 @@ class NguonCProvider : MainAPI() {
         var found = false
 
         payload.sources.forEach { source ->
-            val extracted = loadExtractor(source.url, payload.referer, subtitleCallback) { link ->
+            // Resolve the StreamC embed ourselves first. A generic extractor may claim the URL
+            // (loadExtractor returns true) yet emit nothing, which previously ended in "no links".
+            val resolved = resolveNguonCEmbed(source, payload.referer)
+            if (resolved != null) {
+                callback(
+                    newExtractorLink(name, "$name - ${source.name}", resolved.url, resolved.type) {
+                        referer = resolved.referer
+                        quality = getQualityFromName(source.name)
+                        headers = resolved.headers
+                    }
+                )
+                found = true
+                return@forEach
+            }
+            Log.w(TAG, "own resolver failed for ${source.url}, trying extractors")
+            loadExtractor(source.url, payload.referer, subtitleCallback) { link ->
                 found = true
                 callback(link)
-            }
-            if (!extracted) {
-                resolveNguonCEmbed(source, payload.referer)?.let { resolved ->
-                    callback(
-                        newExtractorLink(name, "$name - ${source.name}", resolved.url, resolved.type) {
-                            referer = resolved.referer
-                            quality = getQualityFromName(source.name)
-                            headers = resolved.headers
-                        }
-                    )
-                    found = true
-                }
             }
         }
         return found
