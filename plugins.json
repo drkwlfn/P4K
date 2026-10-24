@@ -1,9 +1,9 @@
 [
   {
-    "fileHash": "sha256-df31b9af9aae1cebe305dbbaf306a156a45835762c4246b5dabf46f8f993d983",
+    "fileHash": "sha256-abc386275897cc14366870eea98e90b209420043bb5701d956592329433dfeca",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/drkwlfn/P4K",
-    "fileSize": 34512,
+    "fileSize": 34519,
     "status": 1,
     "language": "vi",
     "authors": [
@@ -14,7 +14,7 @@
       "Movie",
       "TvSeries"
     ],
-    "version": 4,
+    "version": 13,
     "internalName": "KKPhim",
     "description": "KKPhim - catalog theo thể loại, quốc gia, năm",
     "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/KKPhim.cs3",
@@ -22,10 +22,10 @@
   },
   {
     "iconUrl": "https://phim.nguonc.com/public/images/Logo/tv.png",
-    "fileHash": "sha256-920c6d40702bfff140edd6b92f256fe70372385369c779a0ddfccfe819f815dd",
+    "fileHash": "sha256-b95a6c141e6594ecff010d45f057f4bb01b245d2ed60b7d7b652cebb556a877b",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/drkwlfn/P4K",
-    "fileSize": 44753,
+    "fileSize": 44754,
     "status": 1,
     "language": "vi",
     "authors": [
@@ -37,7 +37,7 @@
       "TvSeries",
       "Anime"
     ],
-    "version": 2,
+    "version": 28,
     "internalName": "NguonC",
     "description": "NguonC - phim Vietsub, thuyết minh và lồng tiếng",
     "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/NguonC.cs3",
@@ -67,10 +67,10 @@
   },
   {
     "iconUrl": "https://www.google.com/s2/favicons?domain=vsmov.com&sz=%size%",
-    "fileHash": "sha256-82842fb049a1d2cc4a900a2d2d5295eb4c5e91f6228058863a48e20ce545fce3",
+    "fileHash": "sha256-e98d1db8f7c6ed989944203bf6ef24c6d8dacbbb5222430f5bc4f71a48d68069",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/drkwlfn/P4K",
-    "fileSize": 34830,
+    "fileSize": 34832,
     "status": 1,
     "language": "vi",
     "authors": [
@@ -82,7 +82,7 @@
       "TvSeries",
       "Anime"
     ],
-    "version": 2,
+    "version": 13,
     "internalName": "VSMov",
     "description": "VSMov - phim Vietsub, thuyết minh và lồng tiếng",
     "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/VSMov.cs3",
