@@ -257,19 +257,48 @@ class NguonCProvider : MainAPI() {
                 val meta = tryParseJson<BootstrapMeta>(bootstrapJson)
                     ?: run { Log.e(TAG, "step failed L255"); return@runCatching null }
                 val origin = URI(embedUrl).let { "${it.scheme}://${it.authority}" }
+                val frameOrigins = listOf(URI(movieUrl).let { "${it.scheme}://${it.authority}" })
+                val postHeaders = mapOf("Origin" to origin, "User-Agent" to BROWSER_UA)
+
+                // Plain bootstrap (no aesgcm formats) returns a ready-to-play HTTP playlist URL.
+                // The player (Cronet) cannot open data: URIs, so prefer a real URL.
+                val plain = app.post(
+                    meta.api,
+                    json = mapOf(
+                        "action" to "bootstrap",
+                        "referrer" to movieUrl.take(4096),
+                        "frame_origins" to frameOrigins,
+                        "request_grant" to true,
+                        "pretty_url" to true,
+                        "path_chunks" to true,
+                    ),
+                    headers = postHeaders,
+                    referer = embedUrl,
+                ).text
+                val plainUrl = tryParseJson<OpenedBootstrap>(plain)?.preissued?.playlist
+                Log.i(TAG, "plain bootstrap playlist=${plainUrl?.take(60)}")
+                if (plainUrl != null) {
+                    return@runCatching ResolvedStream(
+                        plainUrl,
+                        embedUrl,
+                        ExtractorLinkType.M3U8,
+                        browserHeaders(embedUrl),
+                    )
+                }
+
                 val responseText = app.post(
                     meta.api,
                     json = mapOf(
                         "action" to "bootstrap",
                         "referrer" to movieUrl.take(4096),
-                        "frame_origins" to listOf(URI(movieUrl).let { "${it.scheme}://${it.authority}" }),
+                        "frame_origins" to frameOrigins,
                         "request_grant" to true,
                         "playlist_format" to "aesgcm-v2",
                         "pretty_url" to true,
                         "path_chunks" to true,
                         "bootstrap_format" to "aesgcm-v1",
                     ),
-                    headers = mapOf("Origin" to origin, "User-Agent" to BROWSER_UA),
+                    headers = postHeaders,
                     referer = embedUrl,
                 ).text
                 Log.i(TAG, "bootstrap POST len=${responseText.length} head=${responseText.take(60)}")
