@@ -1,4 +1,4 @@
-version = 2
+version = 13
 
 cloudstream {
     description = "VSMov - phim Vietsub, thuyết minh và lồng tiếng"

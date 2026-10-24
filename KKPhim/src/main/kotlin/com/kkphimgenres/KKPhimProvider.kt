@@ -300,7 +300,7 @@ class KKPhimProvider : MainAPI() {
     private companion object {
         const val PAGE_SIZE = 20
         const val SEARCH_LIMIT = 50
-        const val PLAYBACK_REFERER = "https://kkphim.com/"
+        const val PLAYBACK_REFERER = "https://phimapi.com/"
         const val ADULT_GENRE_SLUG = "the-loai/phim-18"
     }
 }
