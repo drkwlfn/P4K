@@ -14,12 +14,17 @@ import com.lagradost.cloudstream3.utils.StringUtils.encodeUri
 import com.lagradost.cloudstream3.utils.getQualityFromName
 import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.utils.newExtractorLink
+import android.util.Log
 import java.net.URI
 import java.security.MessageDigest
 import javax.crypto.Cipher
 import javax.crypto.Mac
 import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
+
+private const val TAG = "NguonC"
+private const val BROWSER_UA =
+    "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/120 Mobile Safari/537.36"
 
 class NguonCProvider : MainAPI() {
     override var mainUrl = "https://phim.nguonc.com"
@@ -200,6 +205,7 @@ class NguonCProvider : MainAPI() {
         callback: (ExtractorLink) -> Unit,
     ): Boolean {
         val payload = tryParseJson<NguonCLinkPayload>(data) ?: return false
+        Log.i(TAG, "loadLinks sources=${payload.sources.size}")
         var found = false
 
         payload.sources.forEach { source ->
@@ -226,7 +232,9 @@ class NguonCProvider : MainAPI() {
     private suspend fun resolveNguonCEmbed(source: NguonCStreamSource, movieUrl: String): ResolvedStream? {
         return runCatching {
             val embedUrl = source.url
-            val html = app.get(embedUrl, referer = movieUrl).text
+            Log.i(TAG, "embed GET $embedUrl")
+            val html = app.get(embedUrl, referer = movieUrl, headers = mapOf("User-Agent" to BROWSER_UA)).text
+            Log.i(TAG, "embed html len=${html.length} boot=${html.contains("stream-bootstrap")}")
 
             findMediaUrl(html)?.let { direct ->
                 return@runCatching ResolvedStream(
@@ -244,7 +252,7 @@ class NguonCProvider : MainAPI() {
 
             if (bootstrapJson != null) {
                 val meta = tryParseJson<BootstrapMeta>(bootstrapJson)
-                    ?: return@runCatching null
+                    ?: run { Log.e(TAG, "step failed L255"); return@runCatching null }
                 val origin = URI(embedUrl).let { "${it.scheme}://${it.authority}" }
                 val responseText = app.post(
                     meta.api,
@@ -258,27 +266,30 @@ class NguonCProvider : MainAPI() {
                         "path_chunks" to true,
                         "bootstrap_format" to "aesgcm-v1",
                     ),
-                    headers = mapOf("Origin" to origin),
+                    headers = mapOf("Origin" to origin, "User-Agent" to BROWSER_UA),
                     referer = embedUrl,
                 ).text
+                Log.i(TAG, "bootstrap POST len=${responseText.length} head=${responseText.take(60)}")
 
                 val envelope = tryParseJson<BootstrapEnvelope>(responseText)
-                    ?: return@runCatching null
+                    ?: run { Log.e(TAG, "step failed L275"); return@runCatching null }
                 val openedText = if (envelope.format == "aesgcm-v1") {
                     decryptBootstrap(envelope, meta.api)
                 } else responseText
                 val opened = tryParseJson<OpenedBootstrap>(openedText)
-                    ?: return@runCatching null
-                val playlistUrl = opened.preissued?.playlist ?: return@runCatching null
-                var playlist = app.get(playlistUrl, referer = embedUrl).text
+                    ?: run { Log.e(TAG, "step failed L280"); return@runCatching null }
+                val playlistUrl = opened.preissued?.playlist ?: run { Log.e(TAG, "step failed L281"); return@runCatching null }
+                var playlist = app.get(playlistUrl, referer = embedUrl, headers = mapOf("User-Agent" to BROWSER_UA)).text
+                Log.i(TAG, "playlist len=${playlist.length} enc=${playlist.contains("#ENC-AESGCM")}")
                 if (playlist.contains("#ENC-AESGCM")) {
                     val videoHash = opened.video
                         ?: Regex("[?&]hash=([0-9a-f]+)", RegexOption.IGNORE_CASE)
                             .find(embedUrl)?.groupValues?.get(1)
-                        ?: return@runCatching null
+                        ?: run { Log.e(TAG, "step failed L288"); return@runCatching null }
                     playlist = decryptPlaylist(playlist, videoHash)
                 }
                 playlist = absolutizePlaylist(playlist, playlistUrl)
+                Log.i(TAG, "playlist final len=${playlist.length} head=${playlist.take(80).replace('\n', ' ')}")
                 val dataUrl = "data:application/vnd.apple.mpegurl;base64," +
                     base64Encode(playlist.encodeToByteArray())
                 return@runCatching ResolvedStream(
@@ -291,9 +302,9 @@ class NguonCProvider : MainAPI() {
 
             val obfuscated = Regex("""data-obf=["']([^"']+)["']""")
                 .find(html)?.groupValues?.get(1)
-                ?: return@runCatching null
+                ?: run { Log.e(TAG, "step failed L305"); return@runCatching null }
             val legacy = tryParseJson<LegacyStreamData>(base64Decode(obfuscated))
-                ?: return@runCatching null
+                ?: run { Log.e(TAG, "step failed L307"); return@runCatching null }
             val streamUrl = URI(embedUrl).resolve("/${legacy.path}.m3u8").toString()
             ResolvedStream(
                 streamUrl,
@@ -301,7 +312,7 @@ class NguonCProvider : MainAPI() {
                 ExtractorLinkType.M3U8,
                 browserHeaders(embedUrl),
             )
-        }.getOrNull()
+        }.onFailure { Log.e(TAG, "resolve failed for ${source.url}", it) }.getOrNull()
     }
 
     private fun decryptBootstrap(envelope: BootstrapEnvelope, apiUrl: String): String {
