@@ -22,10 +22,10 @@
   },
   {
     "iconUrl": "https://phim.nguonc.com/public/images/Logo/tv.png",
-    "fileHash": "sha256-b95a6c141e6594ecff010d45f057f4bb01b245d2ed60b7d7b652cebb556a877b",
+    "fileHash": "sha256-381d4d2af330c7b68d0d94d318000785c54ab4288464b93400c55b1c7b1d522c",
     "apiVersion": 1,
     "repositoryUrl": "https://github.com/drkwlfn/P4K",
-    "fileSize": 44754,
+    "fileSize": 46525,
     "status": 1,
     "language": "vi",
     "authors": [
@@ -37,7 +37,7 @@
       "TvSeries",
       "Anime"
     ],
-    "version": 28,
+    "version": 29,
     "internalName": "NguonC",
     "description": "NguonC - phim Vietsub, thuyết minh và lồng tiếng",
     "url": "https://raw.githubusercontent.com/drkwlfn/P4K/builds/NguonC.cs3",
